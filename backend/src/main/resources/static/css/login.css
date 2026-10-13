@@ -1,0 +1,131 @@
+/* ==========================================================================
+   Fake News Detection System - Login Page Styles
+   ========================================================================== */
+
+.auth-wrapper {
+    min-height: calc(100vh - 160px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+    background: radial-gradient(circle at 50% 20%, #e0e7ff 0%, #f8fafc 60%);
+}
+
+.auth-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    width: 100%;
+    max-width: 460px;
+    padding: 2.5rem 2.25rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #2563eb, #3b82f6, #60a5fa);
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--primary-subtle);
+    color: var(--primary);
+    border-radius: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.auth-title {
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--secondary);
+    margin-bottom: 0.35rem;
+}
+
+.auth-subtitle {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+}
+
+.form-label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 0.45rem;
+}
+
+.form-control {
+    border-radius: var(--radius-md);
+    border: 1.5px solid var(--border-color);
+    padding: 0.72rem 1rem;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    color: var(--text-primary);
+}
+
+.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    background-color: #ffffff;
+}
+
+.demo-credentials-box {
+    background: #f1f5f9;
+    border: 1px dashed #cbd5e1;
+    border-radius: var(--radius-md);
+    padding: 0.85rem 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.82rem;
+    color: #475569;
+}
+
+.demo-credentials-box code {
+    background: #e2e8f0;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    color: #0f172a;
+    font-weight: 600;
+}
+
+.btn-auth-submit {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 1.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.auth-footer a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}

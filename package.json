@@ -1,0 +1,20 @@
+{
+  "name": "fake-news-detection-system",
+  "version": "1.0.0",
+  "description": "Fake News Detection System - Java Full Stack Mini Project",
+  "scripts": {
+    "dev": "npx -y serve frontend -p 5500",
+    "start": "npx -y serve frontend -p 5500",
+    "frontend": "npx -y serve frontend -p 5500",
+    "backend": "cd backend && mvnw.cmd spring-boot:run",
+    "build": "echo Static frontend ready"
+  },
+  "keywords": [
+    "java",
+    "spring-boot",
+    "fake-news-detection",
+    "full-stack"
+  ],
+  "author": "College Mini Project",
+  "license": "ISC"
+}

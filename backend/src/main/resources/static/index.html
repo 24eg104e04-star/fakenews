@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake News Detection System | College Mini Project</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-badge"><i class="bi bi-shield-check"></i></span>
+                <span>FakeNews<span class="text-primary">Detector</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how-it-works">How It Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#architecture">Architecture</a>
+                    </li>
+                </ul>
+                <div class="d-flex gap-2">
+                    <a href="login.html" class="btn btn-outline-primary">
+                        <i class="bi bi-box-arrow-in-right"></i> Login
+                    </a>
+                    <a href="register.html" class="btn btn-primary">
+                        <i class="bi bi-person-plus"></i> Register
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section text-center">
+        <div class="container">
+            <div class="hero-pill">
+                <i class="bi bi-mortarboard-fill"></i> Java Full Stack College Mini Project
+            </div>
+            <h1 class="hero-title">
+                Detect Misinformation &amp; <br>
+                <span class="text-primary">Fake News in Real Time</span>
+            </h1>
+            <p class="hero-subtitle mx-auto">
+                An end-to-end full stack web application built with Spring Boot, MySQL, and a rule-based heuristic scoring engine to identify sensational, clickbait, and misleading news articles.
+            </p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="detect-news.html" class="btn btn-primary btn-lg px-4">
+                    <i class="bi bi-search"></i> Detect Fake News
+                </a>
+                <a href="login.html" class="btn btn-outline-primary btn-lg px-4">
+                    <i class="bi bi-speedometer2"></i> User Dashboard
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- How It Works Section -->
+    <section class="py-5" id="how-it-works">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h6 class="text-primary text-uppercase fw-bold letter-spacing-1">Simple Workflow</h6>
+                <h2 class="fw-bold">How The System Works</h2>
+                <p class="text-secondary mx-auto" style="max-width: 600px;">
+                    Three streamlined steps to analyze news authenticity using our rule-based scoring architecture.
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card-custom p-4 text-center h-100">
+                        <div class="feature-icon-wrapper feature-icon-blue mx-auto">
+                            <i class="bi bi-file-earmark-text"></i>
+                        </div>
+                        <h4 class="h5 mb-2">1. Input News Article</h4>
+                        <p class="text-secondary mb-0">
+                            Paste or type any news excerpt or headline into the detection console.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-custom p-4 text-center h-100">
+                        <div class="feature-icon-wrapper feature-icon-purple mx-auto">
+                            <i class="bi bi-cpu"></i>
+                        </div>
+                        <h4 class="h5 mb-2">2. Heuristic Analysis</h4>
+                        <p class="text-secondary mb-0">
+                            The Spring Boot backend scans for clickbait keywords, punctuation anomalies, and source citations.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-custom p-4 text-center h-100">
+                        <div class="feature-icon-wrapper feature-icon-green mx-auto">
+                            <i class="bi bi-check2-circle"></i>
+                        </div>
+                        <h4 class="h5 mb-2">3. Instant Verdict &amp; History</h4>
+                        <p class="text-secondary mb-0">
+                            Receive an immediate REAL/FAKE verdict with confidence score and record it permanently in MySQL.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5 bg-white border-top border-bottom" id="features">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h6 class="text-primary text-uppercase fw-bold">Capabilities</h6>
+                <h2 class="fw-bold">Key Project Features</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom p-4 h-100">
+                        <div class="feature-icon-wrapper feature-icon-blue">
+                            <i class="bi bi-person-lock"></i>
+                        </div>
+                        <h4 class="h5">User Authentication</h4>
+                        <p class="text-secondary small mb-0">
+                            Secure registration and login with BCrypt password hashing, session persistence, and protected routes.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom p-4 h-100">
+                        <div class="feature-icon-wrapper feature-icon-purple">
+                            <i class="bi bi-lightning-charge"></i>
+                        </div>
+                        <h4 class="h5">Rule Heuristic Engine</h4>
+                        <p class="text-secondary small mb-0">
+                            Detects sensational phrases ("miracle", "shocking", "you won't believe"), capitalization ratio, and emotional punctuation.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom p-4 h-100">
+                        <div class="feature-icon-wrapper feature-icon-green">
+                            <i class="bi bi-database-check"></i>
+                        </div>
+                        <h4 class="h5">MySQL Persistence</h4>
+                        <p class="text-secondary small mb-0">
+                            Every article, detection verdict, confidence percentage, and timestamp is stored via Spring Data JPA.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom p-4 h-100">
+                        <div class="feature-icon-wrapper feature-icon-amber">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <h4 class="h5">Real-Time Stats</h4>
+                        <p class="text-secondary small mb-0">
+                            Interactive dashboard computing total checked articles, fake detections, and real news distribution dynamically.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="py-5" id="architecture">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h6 class="text-primary text-uppercase fw-bold">Architecture</h6>
+                <h2 class="fw-bold">Java Full Stack Layered Pipeline</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card-custom p-4 p-md-5">
+                        <div class="row text-center g-4 align-items-center">
+                            <div class="col-md-3">
+                                <div class="p-3 bg-light rounded-3 border">
+                                    <i class="bi bi-browser-chrome fs-2 text-primary d-block mb-2"></i>
+                                    <strong>Frontend</strong>
+                                    <div class="text-muted small">HTML5 / CSS3 / JS Fetch API</div>
+                                </div>
+                            </div>
+                            <div class="col-md-1 d-none d-md-block">
+                                <i class="bi bi-arrow-right fs-4 text-muted"></i>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="p-3 bg-light rounded-3 border">
+                                    <i class="bi bi-hdd-network fs-2 text-primary d-block mb-2"></i>
+                                    <strong>Spring Boot REST API</strong>
+                                    <div class="text-muted small">Controller &rarr; Service &rarr; Repository</div>
+                                </div>
+                            </div>
+                            <div class="col-md-1 d-none d-md-block">
+                                <i class="bi bi-arrow-right fs-4 text-muted"></i>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="p-3 bg-light rounded-3 border">
+                                    <i class="bi bi-database fs-2 text-primary d-block mb-2"></i>
+                                    <strong>MySQL Database</strong>
+                                    <div class="text-muted small">users &amp; news tables</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row align-items-center gy-3">
+                <div class="col-md-6 text-center text-md-start">
+                    <span class="fw-bold text-white">Fake News Detection System</span>
+                    <span class="text-muted ms-2">| College Mini Project</span>
+                </div>
+                <div class="col-md-6 text-center text-md-end text-muted small">
+                    Built with Spring Boot 3 &bull; Hibernate &bull; MySQL &bull; Vanilla JavaScript
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

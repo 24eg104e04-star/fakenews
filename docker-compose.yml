@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  # MySQL 8.0 Database Service
+  mysql:
+    image: mysql:8.0
+    container_name: fake-news-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: fake_news_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/fake_news_database.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Spring Boot Full Stack Web Application Service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fake-news-app
+    restart: always
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      PORT: 8080
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/fake_news_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    ports:
+      - "8080:8080"
+
+volumes:
+  mysql_data:

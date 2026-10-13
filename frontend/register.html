@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Fake News Detection System</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Core & Auth Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+
+    <!-- Minimal Navbar -->
+    <nav class="navbar navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-badge"><i class="bi bi-shield-check"></i></span>
+                <span>FakeNews<span class="text-primary">Detector</span></span>
+            </a>
+            <div class="d-flex align-items-center gap-2">
+                <a href="index.html" class="btn btn-sm btn-outline-secondary">
+                    <i class="bi bi-house"></i> Home
+                </a>
+                <a href="login.html" class="btn btn-sm btn-outline-primary">
+                    <i class="bi bi-box-arrow-in-right"></i> Login
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Register Container -->
+    <main class="register-wrapper">
+        <div class="register-card">
+            <div class="auth-header">
+                <div class="auth-icon" style="background: #ecfdf5; color: #10b981;">
+                    <i class="bi bi-person-plus-fill"></i>
+                </div>
+                <h1 class="auth-title">Create New Account</h1>
+                <p class="auth-subtitle">Join the Fake News Detection platform</p>
+            </div>
+
+            <!-- Dynamic Alert Box -->
+            <div id="alertBox" class="alert-custom" style="display: none;" role="alert"></div>
+
+            <!-- Register Form -->
+            <form id="registerForm" novalidate>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Full Name</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0 text-muted">
+                            <i class="bi bi-person"></i>
+                        </span>
+                        <input type="text" class="form-control border-start-0" id="name" 
+                               placeholder="e.g. John Doe" required autocomplete="name">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0 text-muted">
+                            <i class="bi bi-envelope"></i>
+                        </span>
+                        <input type="email" class="form-control border-start-0" id="email" 
+                               placeholder="name@example.com" required autocomplete="email">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0 text-muted">
+                            <i class="bi bi-key"></i>
+                        </span>
+                        <input type="password" class="form-control border-start-0" id="password" 
+                               placeholder="Minimum 6 characters" required autocomplete="new-password">
+                    </div>
+                    <div class="password-requirements">At least 6 characters required.</div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0 text-muted">
+                            <i class="bi bi-shield-lock"></i>
+                        </span>
+                        <input type="password" class="form-control border-start-0" id="confirmPassword" 
+                               placeholder="Re-enter your password" required autocomplete="new-password">
+                    </div>
+                </div>
+
+                <button type="submit" id="submitBtn" class="btn btn-primary btn-auth-submit">
+                    Create Account <i class="bi bi-arrow-right"></i>
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                Already have an account? <a href="login.html">Login</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bootstrap 5 JS & Register Logic -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/register.js"></script>
+</body>
+</html>

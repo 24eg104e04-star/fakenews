@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detect News | Fake News Detection System</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Core & News Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/news.css">
+</head>
+<body>
+
+    <!-- Protected Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="dashboard.html">
+                <span class="brand-badge"><i class="bi bi-shield-check"></i></span>
+                <span>FakeNews<span class="text-primary">Detector</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#detectNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="detectNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">
+                            <i class="bi bi-speedometer2 me-1"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="detect-news.html">
+                            <i class="bi bi-search me-1"></i> Check News
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="history.html">
+                            <i class="bi bi-clock-history me-1"></i> Detection History
+                        </a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center gap-3">
+                    <div class="d-none d-md-flex align-items-center gap-2">
+                        <div class="feature-icon-wrapper feature-icon-blue mb-0" style="width: 36px; height: 36px; font-size: 1rem;">
+                            <i class="bi bi-person"></i>
+                        </div>
+                        <div>
+                            <div class="fw-bold small user-name-display" style="line-height: 1.2;">User</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline-danger btn-sm btn-logout">
+                        <i class="bi bi-box-arrow-right me-1"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="py-5">
+        <div class="container">
+
+            <div class="page-header-box">
+                <h1 class="page-header-title">Enter / Paste News Article</h1>
+                <p class="page-header-subtitle">
+                    Submit any news text to run our heuristic verification algorithm and store the verdict in MySQL.
+                </p>
+            </div>
+
+            <!-- Dynamic Alert Box -->
+            <div id="detectionAlert" class="alert-custom" style="display: none;" role="alert"></div>
+
+            <!-- News Input Card -->
+            <div class="detection-input-card">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+                    <label for="newsText" class="form-label fw-bold mb-0 fs-5 text-secondary">
+                        <i class="bi bi-file-text me-1 text-primary"></i> News Article Content
+                    </label>
+
+                    <!-- Quick Sample Buttons for viva testing -->
+                    <div class="sample-buttons-row mb-0">
+                        <button type="button" class="btn-sample" id="sampleRealBtn">
+                            <i class="bi bi-check2 text-success me-1"></i>Sample Real News
+                        </button>
+                        <button type="button" class="btn-sample" id="sampleFakeBtn">
+                            <i class="bi bi-exclamation-triangle text-danger me-1"></i>Sample Fake News
+                        </button>
+                        <button type="button" class="btn-sample" id="clearTextBtn">
+                            <i class="bi bi-x-circle me-1"></i>Clear
+                        </button>
+                    </div>
+                </div>
+
+                <form id="detectionForm">
+                    <textarea id="newsText" class="news-textarea" rows="8" 
+                              placeholder="Paste your news article here..."></textarea>
+                    
+                    <div class="textarea-footer">
+                        <span id="wordCount">0 words</span>
+                        <span id="charCount">0 characters</span>
+                    </div>
+
+                    <div class="mt-4 d-flex justify-content-end">
+                        <button type="submit" id="checkNewsBtn" class="btn btn-primary btn-lg px-4">
+                            <i class="bi bi-shield-check me-2"></i>Check News
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Detection Result Section (Hidden until result returns) -->
+            <div id="resultSection" style="display: none;">
+                <div class="card-custom mb-3 p-3 bg-light border-0">
+                    <h4 class="h5 mb-0 text-secondary">
+                        <i class="bi bi-graph-up text-primary me-2"></i>Detection Result
+                    </h4>
+                </div>
+
+                <div id="resultCard" class="result-card result-real">
+                    <!-- Verdict Header -->
+                    <div class="verdict-header">
+                        <div>
+                            <span class="text-muted small text-uppercase fw-bold d-block mb-1">Authenticity Verdict</span>
+                            <span id="verdictBadge" class="verdict-badge-large real">
+                                <i id="verdictIcon" class="bi bi-patch-check-fill"></i>
+                                <span id="verdictText">REAL NEWS</span>
+                            </span>
+                        </div>
+                        <div class="confidence-display">
+                            <div class="confidence-label">Confidence Score</div>
+                            <div id="confidenceValue" class="confidence-value">85%</div>
+                        </div>
+                    </div>
+
+                    <!-- Confidence Progress Bar -->
+                    <div class="confidence-progress">
+                        <div id="confidenceProgressBar" class="confidence-bar real" style="width: 85%;"></div>
+                    </div>
+
+                    <!-- Explanation Message -->
+                    <div id="verdictMessage" class="verdict-message">
+                        The news appears to be real based on verified journalistic citations.
+                    </div>
+
+                    <!-- Detected Indicators Chips -->
+                    <div class="mb-4">
+                        <h6 class="fw-bold mb-2 text-secondary small text-uppercase">
+                            <i class="bi bi-list-check me-1"></i> Heuristic Indicators Identified:
+                        </h6>
+                        <div id="indicatorsList" class="d-flex flex-wrap">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Metadata details -->
+                    <div class="row pt-3 border-top g-3 text-secondary small align-items-center">
+                        <div class="col-md-6">
+                            <i class="bi bi-calendar-event me-1"></i> Analysis Date: <strong id="detectionDate">Oct 13, 2026</strong>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <i class="bi bi-database-check me-1 text-success"></i> Saved to MySQL database history
+                        </div>
+                    </div>
+
+                    <!-- Submitted Text Preview Accordion -->
+                    <div class="mt-3 pt-3 border-top">
+                        <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#textPreviewCollapse">
+                            <i class="bi bi-eye me-1"></i> View Submitted News Text
+                        </button>
+                        <a href="history.html" class="btn btn-sm btn-outline-primary ms-2">
+                            <i class="bi bi-clock-history me-1"></i> View All History
+                        </a>
+                        <div class="collapse mt-2" id="textPreviewCollapse">
+                            <div class="p-3 bg-white border rounded small text-secondary" id="previewSubmittedText">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Demo notice -->
+                    <div class="mt-4 p-2 px-3 rounded-2 bg-light text-muted small border">
+                        <i class="bi bi-info-circle me-1"></i>
+                        <strong>Notice:</strong> This is a demo rule-based heuristic detection system implemented for a college mini-project. The detection logic is isolated in <code>NewsDetectionService.java</code> for pluggable machine-learning enhancement.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center text-muted small">
+            Fake News Detection System &bull; Java Full Stack Mini Project &bull; Spring Boot &amp; MySQL
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS & News Logic -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/detect-news.js"></script>
+</body>
+</html>
